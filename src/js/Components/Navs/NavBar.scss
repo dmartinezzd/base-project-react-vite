@@ -3,126 +3,157 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 
+// Variables
+$primary-blue: #1e3c72;
+$primary-red: #d71920;
+$white: #ffffff;
+$gray-bg: #f5f5f5;
+$text-dark: #2c3e50;
 
-.navbar{
-  padding: 0rem !important;
-  background: #efefef !important;
-  min-height: 3rem;
-  z-index: 10;
-  //border-bottom: 1px solid #001a5a !important;
-}
+.navbar {
+  padding: 1rem 2rem !important;
+  background: $white !important;
+  min-height: 70px;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
-.branding{
-  background: transparent;
-  margin-left: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #001a5a !important;
-  font-weight: 500;
-}
-
-.routes{
-  .active{
-    color: #001a5a !important;
-    font-weight: bold !important;
-    //border-bottom: 1px solid #001a5a !important;
+  .container {
+    max-width: 1400px;
   }
 
-  .noActive{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight:normal;
-    height: 3.6rem !important;
-    color: #001a5a !important;
-    transition: all 50ms linear;
-    min-width: 6rem;
-    border-bottom: 1px solid #efefef;
+  // Brand (Logo + Nombre)
+  .navbar-brand {
+    padding: 0;
+    margin: 0;
 
-    &:hover{
-      border-bottom: 1px solid #000;
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, $primary-blue, $primary-red);
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .brand-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: $primary-blue;
+        margin: 0;
+      }
+    }
+  }
+
+  // Navigation Links (Centro)
+  .navbar-collapse {
+    .navbar-nav {
+      gap: 0.5rem; // 🔹 Reducido para acercar botones
+
+      .nav-link {
+        font-size: 16px;
+        font-weight: 500;
+        color: $text-dark;
+        padding: 0.5rem 1rem; // 🔹 Más padding horizontal
+        position: relative;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-red;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background: $primary-red;
+            animation: slideIn 0.3s ease;
+          }
+        }
+      }
+    }
+
+    // Botón Cerrar Sesión (Derecha)
+    &.justify-content-end {
+      margin-left: 1rem; // 🔹 Separación del centro
+
+      .logout-button {
+        border: 2px solid $text-dark; // 🔹 Borde gris oscuro
+        border-radius: 6px; // 🔹 Bordes menos redondeados
+        padding: 8px 20px;
+        background: $white; // 🔹 Fondo blanco
+        color: $text-dark; // 🔹 Texto gris oscuro
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: $primary-blue; // 🔹 Hover azul oscuro
+          color: $white; // 🔹 Texto blanco en hover
+          border-color: $primary-blue;
+        }
+      }
+    }
+  }
+
+  // Toggle para móvil
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+
+    &:focus {
+      box-shadow: none;
     }
   }
 }
 
-.navbar-nav{
-  align-items: center;
-
-  @include media-breakpoint-up(md){
-    align-items: flex-start;
+// Animación hover en links
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
 
-.navbar-light .navbar-toggler,
-.navbar-dark .navbar-toggler{
-  border-color: transparent !important;
-}
+// Responsive
+@media (max-width: 991px) {
+  .navbar {
+    padding: 1rem !important;
 
-.menu-redes{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
+    .navbar-collapse {
+      margin-top: 1rem;
 
-.menu-redes-icon{
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  background: white;
-  border: 1px solid rgba(234, 239, 243,1);
+      .navbar-nav {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-  &:hover{
-    background: rgba(234, 239, 243,0.6);
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-  }
+      &.justify-content-end {
+        margin-top: 1rem;
+        margin-left: 0;
 
-  @include media-breakpoint-up(md){
-    margin-bottom: 0rem;
-  }
-}
-
-.menu-redes-link{
-  padding: 0rem 0.5rem 0rem 0rem !important;
-  margin-right: 0rem;
-
-  &:last-child{
-    padding: 0rem !important;
-    margin-right: 1rem;
-  }
-
-  @include media-breakpoint-up(md){
-    margin-right: 0rem;
-  }
-  
-  .fb{
-    color: #3b5998 !important;
-
-    &:hover{
-      border: 1px solid #3b5998 !important;
-    }
-  }
-
-  .tw{
-    color: #00acee !important;
-
-    &:hover{
-      border: 1px solid #00acee !important;
-    }
-  }
-
-  .in{
-    color: #d6249f !important;
-
-    &:hover{
-      border: 1px solid #d6249f !important;
+        .logout-button {
+          width: 100%;
+        }
+      }
     }
   }
 }

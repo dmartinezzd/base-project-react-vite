@@ -1,0 +1,226 @@
+@use '../../../scss/base.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// Variables
+$primary-blue: #1e3c72;
+$primary-red: #d71920;
+$white: #ffffff;
+$gray-bg: #f5f5f5;
+$text-gray: #6c757d;
+$text-dark: #2c3e50;
+
+.contact {
+  padding: 80px 20px;
+  background: $gray-bg;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.contact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  // 🔹 RESPONSIVE: Una columna en móviles
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+// 🔹 Sección izquierda (Info)
+.contact-info {
+  background: $white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 768px) {
+    padding: 30px 24px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: $primary-blue;
+    margin-bottom: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 26px;
+    }
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: $text-gray;
+    margin-bottom: 12px;
+
+    strong {
+      color: $text-dark;
+      font-weight: 600;
+    }
+  }
+
+  .highlight {
+    margin-top: 24px;
+    background: #fef2f2;
+    padding: 20px;
+    border-left: 4px solid $primary-red;
+    border-radius: 8px;
+
+    strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: $text-dark;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-gray;
+      margin: 0;
+    }
+  }
+}
+
+// 🔹 Sección derecha (Formulario)
+.contact-form {
+  background: $white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 768px) {
+    padding: 30px 24px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: $primary-blue;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+  }
+
+  form {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+
+      // 🔹 RESPONSIVE: Una columna en móviles
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .form-group {
+      &.full {
+        grid-column: span 2;
+
+        // 🔹 RESPONSIVE: No necesita span en móvil
+        @media (max-width: 768px) {
+          grid-column: span 1;
+        }
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: $text-dark;
+        margin-bottom: 8px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: #b0b0b0;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: $primary-blue;
+        }
+
+        &.error {
+          border-color: $primary-red;
+        }
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+      }
+
+      .error-text {
+        display: block;
+        color: $primary-red;
+        font-size: 13px;
+        margin-top: 6px;
+      }
+    }
+
+    button[type="submit"] {
+      margin-top: 24px;
+      padding: 14px 32px;
+      border-radius: 25px;
+      border: none;
+      background: $primary-red;
+      color: $white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover:not(:disabled) {
+        background: darken($primary-red, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($primary-red, 0.4);
+      }
+
+      &:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        padding: 12px 24px;
+      }
+    }
+  }
+
+  .success-box {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: #e6f4ea;
+    border: 1px solid #b7e1c1;
+    color: #1e7e34;
+    font-weight: 500;
+    font-size: 15px;
+  }
+}

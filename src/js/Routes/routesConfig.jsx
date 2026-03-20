@@ -1,9 +1,7 @@
 export const publicPath = '/';
 
 export const routeCodes = {
-    HOMEPAGE: publicPath,
-    SIGNIN: `${publicPath}signIn`,
-    PRICING: `${publicPath}pricing`,
-    CATALOG: `${publicPath}catalog`,
+    SIGNIN: publicPath,  // Login es ahora la ruta raíz
+    HOMEPAGE: `${publicPath}home`,
     NOT_FOUND: '*'
 };

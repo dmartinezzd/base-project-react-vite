@@ -1,0 +1,149 @@
+@use '../../../scss/base.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+// Variables
+$primary-blue: #1e3c72;
+$primary-red: #d71920;
+$white: #ffffff;
+
+.banner {
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 140px 20px 80px; // 🔹 Más padding-top para compensar navbar sticky
+  position: relative;
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+    padding: 120px 20px 60px;
+  }
+
+  .banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    color: $white;
+
+    // Badge
+    .banner-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+
+      @media (max-width: 768px) {
+        font-size: 13px;
+        padding: 8px 16px;
+      }
+    }
+
+    // Title
+    .banner-title {
+      font-size: 52px;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      max-width: 900px;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 28px;
+      }
+    }
+
+    // Description
+    .banner-description {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 800px;
+      opacity: 0.95;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 15px;
+      }
+    }
+
+    // Actions
+    .banner-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+
+      .btn {
+        padding: 14px 32px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+          padding: 12px 28px;
+          font-size: 15px;
+        }
+
+        @media (max-width: 480px) {
+          width: 100%;
+          text-align: center;
+        }
+
+        // Botón Primario (Blanco con texto azul)
+        &.btn-primary {
+          background: $white;
+          color: $primary-blue;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        // Botón Secundario (Rojo)
+        &.btn-secondary {
+          background: $primary-red;
+          color: $white;
+
+          &:hover {
+            background: darken($primary-red, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba($primary-red, 0.4);
+          }
+        }
+
+        // Botón Azul (alternativa)
+        &.btn-blue {
+          background: #0066cc;
+          color: $white;
+
+          &:hover {
+            background: darken(#0066cc, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(#0066cc, 0.4);
+          }
+        }
+      }
+    }
+  }
+}

@@ -11,7 +11,7 @@ export async function navBarLogics(callback, payload = {}) {
 
       successCallback(
         {
-          data: successData[0],
+          data: successData.data,
           success
         }
       );

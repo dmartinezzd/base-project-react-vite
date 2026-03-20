@@ -1,10 +1,11 @@
-import { homeApi } from "../Api/home";
-import { getHomeRequest } from "../Requests/home";
+import { loginApi } from "../Api/login";
+import { getLoginRequest } from "../Requests/login";
 
-export async function homeLogics(callback, payload = {}) {
-  const request = getHomeRequest(payload);
+export async function loginLogics(callback, payload = {}) {
 
-  await homeApi(request)
+  const request = getLoginRequest(payload);
+
+  await loginApi(request)
     .then(response => {
       const { successCallback } = callback;
       const { successData, success } = response;

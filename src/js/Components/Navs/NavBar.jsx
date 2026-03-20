@@ -1,113 +1,114 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.scss";
-import classnames from "classnames";
-import { menuLiterals } from "../../Literals/menu";
-//import PropTypes from "prop-types";
-import { routeCodes } from "../../Routes/routesConfig";
-import { NavLink } from "react-router-dom";
-import urlImgLogo from "../../../assets/box.png";
+
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Image from 'react-bootstrap/Image';
 
-//redux
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { setNavBarSuccess } from "../../Redux/Reducers/navBar";
 import { getNavBarData } from "../../Redux/Selectors/navBar";
-//logics
+import { logout } from "../../Redux/Reducers/login";
+
+// logics
 import { navBarLogics } from "../../Logics/navBar";
-//@fortawesome
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-library.add(fab, fas, far);
 
-//init props
-NavBar.propTypes = {};
+// routes
+import { routeCodes } from "../../Routes/routesConfig";
 
-export default function NavBar(props = {}) {
+export default function NavBar() {
   const dispatch = useDispatch();
-  const navBarSuccess = useSelector(getNavBarData);
+  const navigate = useNavigate();
+  const navBarData = useSelector(getNavBarData);
 
   useEffect(() => {
-    navBarLogics({ successCallback, errorCallback }); //@params(callback, payload)
+    if (!navBarData) {
+      navBarLogics({ successCallback, errorCallback });
+    }
   }, []);
 
   function successCallback(data) {
     dispatch(setNavBarSuccess(data));
   }
 
-  function errorCallback(error) {
-    return;
-  }
+  function errorCallback() {}
 
-  function redirectBlanck(url) {
-    window.open(url, '_blank');
-  }
+  const scrollToSection = (href) => {
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleAction = (action) => {
+    if (action === "logout") {
+      dispatch(logout());
+      navigate(routeCodes.SIGNIN);
+    }
+  };
 
   function render() {
-    const name = menuLiterals && menuLiterals.name;
-    const routes = menuLiterals && menuLiterals.routes;
-    const redes = menuLiterals && menuLiterals.redes;
+    if (!navBarData) return null;
+
+    const { brand, navigation, actions } = navBarData.data;
 
     return (
-      <Navbar collapseOnSelect expand="lg">
+      <Navbar expand="lg">
         <Container>
-          <Navbar.Brand as={NavLink} to={routeCodes.HOMEPAGE} className={"branding"}>
-            <Image
-              src={urlImgLogo}
-              width="32"
-              fluid
-              className="d-inline-block align-top"
-              alt={name}
-            />FULLBox
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto routes">
-              {
-                routes && routes.map((el, index) => {
-                  return (
-                    <Nav.Link
-                      id={"routes" + index}
-                      key={index}
-                      className={"noActive"}
-                      as={NavLink}
-                      to={el.url}
-                    >{el.label}
-                    </Nav.Link>
-                  );
-                })
-              }
-            </Nav>
-          </Navbar.Collapse>
-          <Navbar.Collapse className="justify-content-end">
-            <div className={"menu-redes"}>
-              {
-                redes && redes.map((el, index) => {
-                  const redesClass = classnames("menu-redes-icon", el.class);
 
-                  return (
-                    <div
-                      id={"redes" + index}
-                      key={index}
-                      className={"menu-redes-link"}
-                      onClick={() => redirectBlanck(el.url)}
-                    >
-                      <div className={redesClass}>
-                        <FontAwesomeIcon icon={el.icon} />
-                      </div>
-                    </div>
-                  );
-                })
-              }
+          {/* Brand */}
+          <Navbar.Brand>
+            <div className="brand-container">
+              <div className="logo">
+                {brand.logoText}
+              </div>
+              <div className="brand-name">{brand.name}</div>
             </div>
+          </Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="navbar-nav" />
+
+          <Navbar.Collapse id="navbar-nav">
+            
+            {/* Navigation Links (Centro) */}
+            <Nav className="justify-content-center flex-grow-1">
+              {navigation
+                ?.filter((item) => item.visible)
+                .sort((a, b) => a.order - b.order)
+                .map((item) => (
+                  <Nav.Link
+                    key={item.id}
+                    onClick={() => scrollToSection(item.href)}
+                  >
+                    {item.label}
+                  </Nav.Link>
+                ))}
+            </Nav>
+
+            {/* Botón Cerrar Sesión (Derecha) */}
+            <div className="d-flex">
+              {actions
+                ?.filter((item) => item.visible)
+                .sort((a, b) => a.order - b.order)
+                .map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleAction(item.action)}
+                    className="logout-button"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+            </div>
+
           </Navbar.Collapse>
+
         </Container>
-      </Navbar >
+      </Navbar>
     );
   }
 
