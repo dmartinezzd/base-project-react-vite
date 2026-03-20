@@ -1,0 +1,128 @@
+@use '../../../scss/base.scss';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+
+.navbar{
+  padding: 0rem !important;
+  background: #efefef !important;
+  min-height: 3rem;
+  z-index: 10;
+  //border-bottom: 1px solid #001a5a !important;
+}
+
+.branding{
+  background: transparent;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #001a5a !important;
+  font-weight: 500;
+}
+
+.routes{
+  .active{
+    color: #001a5a !important;
+    font-weight: bold !important;
+    //border-bottom: 1px solid #001a5a !important;
+  }
+
+  .noActive{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:normal;
+    height: 3.6rem !important;
+    color: #001a5a !important;
+    transition: all 50ms linear;
+    min-width: 6rem;
+    border-bottom: 1px solid #efefef;
+
+    &:hover{
+      border-bottom: 1px solid #000;
+    }
+  }
+}
+
+.navbar-nav{
+  align-items: center;
+
+  @include media-breakpoint-up(md){
+    align-items: flex-start;
+  }
+}
+
+.navbar-light .navbar-toggler,
+.navbar-dark .navbar-toggler{
+  border-color: transparent !important;
+}
+
+.menu-redes{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.menu-redes-icon{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  background: white;
+  border: 1px solid rgba(234, 239, 243,1);
+
+  &:hover{
+    background: rgba(234, 239, 243,0.6);
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+
+  @include media-breakpoint-up(md){
+    margin-bottom: 0rem;
+  }
+}
+
+.menu-redes-link{
+  padding: 0rem 0.5rem 0rem 0rem !important;
+  margin-right: 0rem;
+
+  &:last-child{
+    padding: 0rem !important;
+    margin-right: 1rem;
+  }
+
+  @include media-breakpoint-up(md){
+    margin-right: 0rem;
+  }
+  
+  .fb{
+    color: #3b5998 !important;
+
+    &:hover{
+      border: 1px solid #3b5998 !important;
+    }
+  }
+
+  .tw{
+    color: #00acee !important;
+
+    &:hover{
+      border: 1px solid #00acee !important;
+    }
+  }
+
+  .in{
+    color: #d6249f !important;
+
+    &:hover{
+      border: 1px solid #d6249f !important;
+    }
+  }
+}
