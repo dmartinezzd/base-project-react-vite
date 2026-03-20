@@ -1,3 +1,4 @@
 //Selectors
-export const getHelloWorldData = (state) => state.homeReducer.home.data;
-export const getHelloWorldDataError = (state) => state.homeReducer.home.error;
+export const getHelloWorldData = (state) => state.helloWorldReducer.helloWorld.data;
+
+export const getHelloWorldDataError = (state) => state.helloWorldReducer.helloWorld.error;

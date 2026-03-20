@@ -65,7 +65,6 @@ export default function Home(props = {}) {
   }
 
   function successHelloWorldCallback(data) {
-    debugger
     dispatch(setHelloWorldSuccess(data));
     setLoader(false);
   }
@@ -75,7 +74,6 @@ export default function Home(props = {}) {
     setLoader(false);
   }
       
- 
 
   function render() {
     return (

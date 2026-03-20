@@ -8,10 +8,10 @@ export async function helloWorldLogic(callback, payload = {}) {
     .then(response => {
       const { successHelloWorldCallback } = callback;
       const { successData, success } = response;
-      debugger
+
       successHelloWorldCallback(
         {
-          data: successData[0],
+          data: successData.data,
           success
         }
       );
