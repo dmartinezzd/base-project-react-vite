@@ -14,6 +14,10 @@ export async function loginApi(request) {
     const { status, data } = axiosResponse;
 
     if (status === 200) {
+      if (!data.success) {
+        response.errorData = data.message;
+        return Promise.reject(response);
+      }
       //transform
       const transformResponse = true;//homeTransform(data);
 

@@ -2,6 +2,6 @@ export function getNavBarRequest(payload={}) {
   return {
     method: 'get',
     headers: { "content-type": "application/json" },
-    url: 'https://private-317c08-pruebafrontend20261.apiary-mock.com/menu',
+    url: 'https://private-c9c3b5-homepagetest1.apiary-mock.com/menu',
   }
 }

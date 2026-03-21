@@ -121,13 +121,13 @@ export default function Login() {
       );
     }
 
-    if (!loginData) {
-      return (
-        <div className="login-container">
-          <div>Error cargando login</div>
-        </div>
-      );
-    }
+  if (!loginData) {
+    return (
+      <div className="login-container">
+        <div>{loginDataError?.error || "Error cargando login"}</div>
+      </div>
+    );
+  }
 
     return (
       <div className="login-container">
