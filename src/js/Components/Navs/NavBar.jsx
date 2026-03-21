@@ -60,7 +60,6 @@ export default function NavBar() {
       <Navbar expand="lg">
         <Container>
 
-          {/* Brand */}
           <Navbar.Brand>
             <div className="brand-container">
               <div className="logo">
@@ -74,7 +73,6 @@ export default function NavBar() {
 
           <Navbar.Collapse id="navbar-nav">
             
-            {/* Navigation Links (Centro) */}
             <Nav className="justify-content-center flex-grow-1">
               {navigation
                 ?.filter((item) => item.visible)
@@ -89,7 +87,6 @@ export default function NavBar() {
                 ))}
             </Nav>
 
-            {/* Botón Cerrar Sesión (Derecha) */}
             <div className="d-flex">
               {actions
                 ?.filter((item) => item.visible)

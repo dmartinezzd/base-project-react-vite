@@ -26,7 +26,6 @@ $footer-bg: #0b1733;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 
-  // 🔹 RESPONSIVE: Una columna en móviles
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;

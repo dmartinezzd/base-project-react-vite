@@ -11,17 +11,16 @@ export default function Carrusel({ data }) {
 
   const { sectionId, title, description, cards } = data;
 
-  // Determinar cards por página según el ancho de pantalla
   const [cardsPerPage, setCardsPerPage] = useState(3);
 
   useEffect(() => {
     const updateCardsPerPage = () => {
       if (window.innerWidth <= 768) {
-        setCardsPerPage(1); // Móvil: 1 card
+        setCardsPerPage(1); 
       } else if (window.innerWidth <= 1024) {
-        setCardsPerPage(2); // Tablet: 2 cards
+        setCardsPerPage(2); 
       } else {
-        setCardsPerPage(3); // Desktop: 3 cards
+        setCardsPerPage(3); 
       }
     };
 
@@ -31,7 +30,6 @@ export default function Carrusel({ data }) {
     return () => window.removeEventListener('resize', updateCardsPerPage);
   }, []);
 
-  // Bloquear/desbloquear scroll del body cuando modal abre
   useEffect(() => {
     if (selectedCard) {
       document.body.classList.add('modal-open');
@@ -77,7 +75,6 @@ export default function Carrusel({ data }) {
 
       <div className="carrusel-wrapper">
         
-        {/* Flecha Izquierda */}
         <button 
           className="carrusel-arrow carrusel-arrow-left" 
           onClick={prevSlide}
@@ -86,7 +83,6 @@ export default function Carrusel({ data }) {
           <FaChevronLeft />
         </button>
 
-        {/* Cards Container */}
         <div className="carrusel-container">
           {visibleCards.map((card) => (
             <div 
@@ -107,7 +103,7 @@ export default function Carrusel({ data }) {
                 <button 
                   className="card-button"
                   onClick={(e) => {
-                    e.stopPropagation(); // Evitar doble click
+                    e.stopPropagation(); 
                     openModal(card);
                   }}
                 >
@@ -119,7 +115,6 @@ export default function Carrusel({ data }) {
           ))}
         </div>
 
-        {/* Flecha Derecha */}
         <button 
           className="carrusel-arrow carrusel-arrow-right" 
           onClick={nextSlide}
@@ -130,7 +125,6 @@ export default function Carrusel({ data }) {
 
       </div>
 
-      {/* Modal */}
       {selectedCard && (
         <Modal
           card={selectedCard}

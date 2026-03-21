@@ -1,7 +1,7 @@
 export const publicPath = '/';
 
 export const routeCodes = {
-    SIGNIN: publicPath,  // Login es ahora la ruta raíz
+    SIGNIN: publicPath,
     HOMEPAGE: `${publicPath}home`,
     NOT_FOUND: '*'
 };

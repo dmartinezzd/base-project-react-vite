@@ -6,13 +6,11 @@ export default function ContactForm({ data }) {
 
   const { infoCard, formCard } = data;
 
-  // 🔹 estados
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  // 🔹 regex
   const regex = {
     firstName: /^[a-zA-Z\s]{1,25}$/,
     lastName: /^[a-zA-Z\s]{1,25}$/,
@@ -21,7 +19,6 @@ export default function ContactForm({ data }) {
     address: /^[a-zA-Z0-9\s#-]{8,100}$/,
   };
 
-  // 🔹 handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -85,7 +82,6 @@ export default function ContactForm({ data }) {
     }
   };
 
-  // 🔹 botón habilitado
   const isValid =
     formCard.fields
       .filter(f => f.required)
@@ -97,7 +93,6 @@ export default function ContactForm({ data }) {
 
       <div className="contact-container">
 
-        {/* 🔹 LEFT */}
         <div className="contact-info">
           <h2>{infoCard.title}</h2>
           <p>{infoCard.description}</p>
@@ -114,7 +109,6 @@ export default function ContactForm({ data }) {
           </div>
         </div>
 
-        {/* 🔹 RIGHT */}
         <div className="contact-form">
 
           <h2>{formCard.title}</h2>

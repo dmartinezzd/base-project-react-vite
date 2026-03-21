@@ -148,7 +148,6 @@ export default function Login() {
             <p className="login-description">{loginData.content.description}</p>
           </div>
 
-          {/* Form */}
           <form className="login-form" onSubmit={handleSubmit}>
             {loginData.form.fields.map((field) => (
               <div key={field.id} className="form-group">

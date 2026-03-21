@@ -34,24 +34,20 @@ export default function Banner({ data }) {
     <section id={sectionId} className="banner" style={backgroundStyle}>
       <div className="banner-content">
 
-        {/* Badge */}
         {badge && (
           <div className="banner-badge">
             {badge}
           </div>
         )}
 
-        {/* Title */}
         <h1 className="banner-title">
           {title}
         </h1>
 
-        {/* Description */}
         <p className="banner-description">
           {description}
         </p>
 
-        {/* Actions */}
         {actions && actions.length > 0 && (
           <div className="banner-actions">
             {actions.map((btn) => (

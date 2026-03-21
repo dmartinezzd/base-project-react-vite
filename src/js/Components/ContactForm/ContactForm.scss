@@ -27,14 +27,12 @@ $text-dark: #2c3e50;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
 
-  // 🔹 RESPONSIVE: Una columna en móviles
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 }
 
-// 🔹 Sección izquierda (Info)
 .contact-info {
   background: $white;
   padding: 40px;
@@ -91,7 +89,6 @@ $text-dark: #2c3e50;
   }
 }
 
-// 🔹 Sección derecha (Formulario)
 .contact-form {
   background: $white;
   padding: 40px;
@@ -120,7 +117,6 @@ $text-dark: #2c3e50;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
 
-      // 🔹 RESPONSIVE: Una columna en móviles
       @media (max-width: 768px) {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -131,7 +127,6 @@ $text-dark: #2c3e50;
       &.full {
         grid-column: span 2;
 
-        // 🔹 RESPONSIVE: No necesita span en móvil
         @media (max-width: 768px) {
           grid-column: span 1;
         }

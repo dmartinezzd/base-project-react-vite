@@ -3,7 +3,6 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 
-// Variables
 $primary-blue: #1e3c72;
 $primary-red: #d71920;
 $white: #ffffff;
@@ -56,16 +55,15 @@ $text-dark: #2c3e50;
     }
   }
 
-  // Navigation Links (Centro)
   .navbar-collapse {
     .navbar-nav {
-      gap: 0.5rem; // 🔹 Reducido para acercar botones
+      gap: 0.5rem;
 
       .nav-link {
         font-size: 16px;
         font-weight: 500;
         color: $text-dark;
-        padding: 0.5rem 1rem; // 🔹 Más padding horizontal
+        padding: 0.5rem 1rem;
         position: relative;
         cursor: pointer;
         transition: color 0.3s ease;
@@ -87,31 +85,29 @@ $text-dark: #2c3e50;
       }
     }
 
-    // Botón Cerrar Sesión (Derecha)
     &.justify-content-end {
-      margin-left: 1rem; // 🔹 Separación del centro
+      margin-left: 1rem;
 
       .logout-button {
-        border: 2px solid $text-dark; // 🔹 Borde gris oscuro
-        border-radius: 6px; // 🔹 Bordes menos redondeados
+        border: 2px solid $text-dark; 
+        border-radius: 6px; 
         padding: 8px 20px;
-        background: $white; // 🔹 Fondo blanco
-        color: $text-dark; // 🔹 Texto gris oscuro
+        background: $white;
+        color: $text-dark; 
         font-size: 15px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-          background: $primary-blue; // 🔹 Hover azul oscuro
-          color: $white; // 🔹 Texto blanco en hover
+          background: $primary-blue; 
+          color: $white; 
           border-color: $primary-blue;
         }
       }
     }
   }
 
-  // Toggle para móvil
   .navbar-toggler {
     border: none;
     padding: 0.5rem;
@@ -122,7 +118,6 @@ $text-dark: #2c3e50;
   }
 }
 
-// Animación hover en links
 @keyframes slideIn {
   from {
     width: 0;
@@ -132,7 +127,6 @@ $text-dark: #2c3e50;
   }
 }
 
-// Responsive
 @media (max-width: 991px) {
   .navbar {
     padding: 1rem !important;

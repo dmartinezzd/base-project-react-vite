@@ -15,7 +15,7 @@ $white: #ffffff;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding: 140px 20px 80px; // 🔹 Más padding-top para compensar navbar sticky
+  padding: 140px 20px 80px; 
   position: relative;
 
   @media (max-width: 768px) {
@@ -29,7 +29,6 @@ $white: #ffffff;
     width: 100%;
     color: $white;
 
-    // Badge
     .banner-badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
@@ -47,7 +46,6 @@ $white: #ffffff;
       }
     }
 
-    // Title
     .banner-title {
       font-size: 52px;
       font-weight: bold;
@@ -65,7 +63,6 @@ $white: #ffffff;
       }
     }
 
-    // Description
     .banner-description {
       font-size: 18px;
       line-height: 1.6;
@@ -83,7 +80,6 @@ $white: #ffffff;
       }
     }
 
-    // Actions
     .banner-actions {
       display: flex;
       gap: 16px;
@@ -108,7 +104,6 @@ $white: #ffffff;
           text-align: center;
         }
 
-        // Botón Primario (Blanco con texto azul)
         &.btn-primary {
           background: $white;
           color: $primary-blue;
@@ -120,7 +115,6 @@ $white: #ffffff;
           }
         }
 
-        // Botón Secundario (Rojo)
         &.btn-secondary {
           background: $primary-red;
           color: $white;
@@ -132,7 +126,6 @@ $white: #ffffff;
           }
         }
 
-        // Botón Azul (alternativa)
         &.btn-blue {
           background: #0066cc;
           color: $white;

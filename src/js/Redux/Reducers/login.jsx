@@ -4,7 +4,7 @@ const initialState = {
   login: {
     data: null,
     error: null,
-    isAuthenticated: false // 🔥 clave
+    isAuthenticated: false
   }
 };
 
@@ -15,16 +15,16 @@ const loginReducer = createSlice({
     setLoginSuccess: (state, action) => {
       state.login.data = action.payload;
       state.login.error = null;
-      state.login.isAuthenticated = true; // ✅ login OK
+      state.login.isAuthenticated = true;
     },
     setLoginError: (state, action) => {
       state.login.error = action.payload;
-      state.login.isAuthenticated = false; // ❌ login fail
+      state.login.isAuthenticated = false; 
     },
     logout: (state) => {
       state.login.data = null;
       state.login.error = null;
-      state.login.isAuthenticated = false; // 🔥 logout
+      state.login.isAuthenticated = false; 
     }
   }
 });
