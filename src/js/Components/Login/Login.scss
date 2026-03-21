@@ -1,4 +1,3 @@
-// Variables
 $primary-blue: #1e3c72;
 $primary-red: #d71920;
 $white: #ffffff;
@@ -7,7 +6,6 @@ $gray-medium: #cccccc;
 $gray-dark: #666666;
 $error-red: #ff0000;
 
-// Mixins
 @mixin center-flex {
   display: flex;
   justify-content: center;
@@ -18,10 +16,8 @@ $error-red: #ff0000;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-// Estilos del Login
 .login-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, $primary-blue 0%, #5a3d7a 50%, $primary-red 100%);
   @include center-flex;
   padding: 20px;
 
@@ -163,7 +159,6 @@ $error-red: #ff0000;
   }
 }
 
-// Responsive
 @media (max-width: 768px) {
   .login-container {
     .login-card {

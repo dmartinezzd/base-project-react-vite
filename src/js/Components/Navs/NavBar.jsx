@@ -6,16 +6,12 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-// redux
 import { useDispatch, useSelector } from "react-redux";
 import { setNavBarSuccess } from "../../Redux/Reducers/navBar";
 import { getNavBarData } from "../../Redux/Selectors/navBar";
 import { logout } from "../../Redux/Reducers/login";
 
-// logics
 import { navBarLogics } from "../../Logics/navBar";
-
-// routes
 import { routeCodes } from "../../Routes/routesConfig";
 
 export default function NavBar() {
@@ -38,7 +34,6 @@ export default function NavBar() {
   const scrollToSection = (href) => {
     const id = href.replace("#", "");
     const element = document.getElementById(id);
-
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -57,14 +52,12 @@ export default function NavBar() {
     const { brand, navigation, actions } = navBarData.data;
 
     return (
-      <Navbar expand="lg">
+      <Navbar expand="lg" fixed="top">
         <Container>
 
           <Navbar.Brand>
             <div className="brand-container">
-              <div className="logo">
-                {brand.logoText}
-              </div>
+              <div className="logo">{brand.logoText}</div>
               <div className="brand-name">{brand.name}</div>
             </div>
           </Navbar.Brand>
@@ -72,8 +65,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="navbar-nav" />
 
           <Navbar.Collapse id="navbar-nav">
-            
-            <Nav className="justify-content-center flex-grow-1">
+            <Nav className="ms-auto">
               {navigation
                 ?.filter((item) => item.visible)
                 .sort((a, b) => a.order - b.order)
@@ -87,7 +79,7 @@ export default function NavBar() {
                 ))}
             </Nav>
 
-            <div className="d-flex">
+            <div className="navbar-actions">
               {actions
                 ?.filter((item) => item.visible)
                 .sort((a, b) => a.order - b.order)

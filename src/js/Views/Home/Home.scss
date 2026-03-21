@@ -1,16 +1,17 @@
 @use '../../../scss/base.scss';
 
 .mainWrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
 }
 
 .verticalAlingWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }

@@ -3,7 +3,6 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 
-// Variables
 $primary-blue: #1e3c72;
 $primary-red: #d71920;
 $white: #ffffff;
@@ -15,7 +14,7 @@ $white: #ffffff;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding: 140px 20px 80px; 
+  padding: 140px 20px 80px;
   position: relative;
 
   @media (max-width: 768px) {
@@ -85,7 +84,7 @@ $white: #ffffff;
       gap: 16px;
       flex-wrap: wrap;
 
-      .btn {
+      .banner-btn {
         padding: 14px 32px;
         border-radius: 25px;
         font-size: 16px;
@@ -104,7 +103,7 @@ $white: #ffffff;
           text-align: center;
         }
 
-        &.btn-primary {
+        &.banner-btn-light {
           background: $white;
           color: $primary-blue;
 
@@ -115,7 +114,7 @@ $white: #ffffff;
           }
         }
 
-        &.btn-secondary {
+        &.banner-btn-primary {
           background: $primary-red;
           color: $white;
 
@@ -126,7 +125,7 @@ $white: #ffffff;
           }
         }
 
-        &.btn-blue {
+        &.banner-btn-blue {
           background: #0066cc;
           color: $white;
 

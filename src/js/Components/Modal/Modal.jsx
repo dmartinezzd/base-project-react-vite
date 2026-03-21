@@ -12,26 +12,21 @@ export default function Modal({ card, onClose }) {
     }
   };
 
-  const handleContentClick = (e) => {
-    e.stopPropagation();
-  };
-
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
-
-      <div className="modal-content" onClick={handleContentClick}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
 
         <div className="modal-image-container">
           <img src={image} alt={title} className="modal-image" />
         </div>
 
-        <button className="modal-close-button" onClick={onClose} aria-label="Cerrar">
-          ×
-        </button>
-
         <div className="modal-body">
-
-          <h2 className="modal-title">{detail.title}</h2>
+          <div className="modal-title-row">
+            <h2 className="modal-title">{detail.title}</h2>
+            <button className="modal-close-button" onClick={onClose} aria-label="Cerrar">
+              ×
+            </button>
+          </div>
 
           <p className="modal-description">{detail.description}</p>
 
@@ -46,11 +41,9 @@ export default function Modal({ card, onClose }) {
           <button className="modal-button" onClick={onClose}>
             {detail.buttonLabel || "Cerrar"}
           </button>
-
         </div>
 
       </div>
-
     </div>
   );
 }

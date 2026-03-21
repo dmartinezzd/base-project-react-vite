@@ -60,11 +60,13 @@ export default function Home() {
                 homeDataSuccess?.success &&
                 <Fragment>
                   <NavBar />
-                  <Banner data={homeDataSuccess?.data?.hero} />
-                  <Carrusel data={homeDataSuccess?.data?.benefits} />
-                  <InformationSection data={homeDataSuccess?.data?.informationSection} />
-                  <ContactForm data={homeDataSuccess?.data?.contactSection} />
-                  <Footer data={homeDataSuccess?.data?.footer} />
+                  <div className="page-content">
+                    <Banner data={homeDataSuccess?.data?.hero} />
+                    <Carrusel data={homeDataSuccess?.data?.benefits} />
+                    <InformationSection data={homeDataSuccess?.data?.informationSection} />
+                    <ContactForm data={homeDataSuccess?.data?.contactSection} />
+                    <Footer data={homeDataSuccess?.data?.footer} />
+                  </div>
                 </Fragment>
               }
 

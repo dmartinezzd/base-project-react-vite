@@ -24,7 +24,6 @@ export default function Banner({ data }) {
   const scrollToSection = (href) => {
     const id = href.replace("#", "");
     const el = document.getElementById(id);
-
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -35,25 +34,19 @@ export default function Banner({ data }) {
       <div className="banner-content">
 
         {badge && (
-          <div className="banner-badge">
-            {badge}
-          </div>
+          <div className="banner-badge">{badge}</div>
         )}
 
-        <h1 className="banner-title">
-          {title}
-        </h1>
+        <h1 className="banner-title">{title}</h1>
 
-        <p className="banner-description">
-          {description}
-        </p>
+        <p className="banner-description">{description}</p>
 
         {actions && actions.length > 0 && (
           <div className="banner-actions">
             {actions.map((btn) => (
               <button
                 key={btn.id}
-                className={`btn btn-${btn.variant}`}
+                className={`banner-btn banner-btn-${btn.variant}`}
                 onClick={() => scrollToSection(btn.href)}
               >
                 {btn.label}

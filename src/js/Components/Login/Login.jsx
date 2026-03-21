@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 
-//Redux
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginSuccess, setLoginError } from "../../Redux/Reducers/login";
 import { getLoginData, getLoginDataError } from "../../Redux/Selectors/login";
 
-//Logics
 import { loginLogics } from "../../Logics/login";
-
-//Routes
 import { routeCodes } from "../../Routes/routesConfig";
 
 export default function Login() {
@@ -37,10 +33,7 @@ export default function Login() {
 
   useEffect(() => {
     if (!loginDataSuccess) {
-      loginLogics({
-        successCallback,
-        errorCallback,
-      });
+      loginLogics({ successCallback, errorCallback });
     } else {
       setLoader(false);
     }
@@ -58,21 +51,12 @@ export default function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
-
-    setTouched({
-      ...touched,
-      [name]: true,
-    });
-
+    setTouched({ ...touched, [name]: true });
     validateField(name, value);
   };
 
@@ -82,25 +66,15 @@ export default function Login() {
     if (!value.trim()) {
       error = "Este campo es requerido";
     } else if (regex[field] && !regex[field].test(value)) {
-      if (field === "email") {
-        error = "Formato inválido (ej: lifemiles@avianca.com)";
-      }
-
-      if (field === "password") {
-        error =
-          "Mínimo 8 caracteres, 1 mayúscula, 1 número y solo (* % - $ #)";
-      }
+      if (field === "email") error = "Formato inválido (ej: lifemiles@avianca.com)";
+      if (field === "password") error = "Mínimo 8 caracteres, 1 mayúscula, 1 número y solo (* % - $ #)";
     }
 
-    setErrors((prev) => ({
-      ...prev,
-      [field]: error,
-    }));
+    setErrors((prev) => ({ ...prev, [field]: error }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (isFormValid) {
       navigate(routeCodes.HOMEPAGE);
     }
@@ -121,23 +95,33 @@ export default function Login() {
       );
     }
 
-  if (!loginData) {
-    return (
-      <div className="login-container">
-        <div>{loginDataError?.error || "Error cargando login"}</div>
-      </div>
-    );
-  }
+    if (!loginData) {
+      return (
+        <div className="login-container">
+          <div>{loginDataError?.error || "Error cargando login"}</div>
+        </div>
+      );
+    }
+
+    const { background } = loginData;
+
+    const backgroundStyle = {
+      backgroundImage: `
+        linear-gradient(${background.overlay.startColor}, ${background.overlay.endColor}),
+        url(${background.image})
+      `,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    };
 
     return (
-      <div className="login-container">
+      <div className="login-container" style={backgroundStyle}>
         <div className="login-card">
-          
+
           <div className="login-header">
             <div className="logo-container">
-              <div className="logo">
-                {loginData.brand.logoText}
-              </div>
+              <div className="logo">{loginData.brand.logoText}</div>
               <div className="brand-info">
                 <h2 className="brand-name">{loginData.brand.title}</h2>
                 <p className="brand-subtitle">{loginData.brand.subtitle}</p>
@@ -164,21 +148,20 @@ export default function Login() {
                 />
 
                 {touched[field.name] && errors[field.name] && (
-                  <span className="error-message">
-                    {errors[field.name]}
-                  </span>
+                  <span className="error-message">{errors[field.name]}</span>
                 )}
               </div>
             ))}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="submit-button"
               disabled={!isFormValid}
             >
               {loginData.form.submitButton.label}
             </button>
           </form>
+
         </div>
       </div>
     );
