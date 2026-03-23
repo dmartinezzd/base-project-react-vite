@@ -24,5 +24,6 @@ export async function homeLogics(callback, payload = {}) {
         error: errorData,
         success
       })
+      console.log("errorData:", errorData);
     });
 }

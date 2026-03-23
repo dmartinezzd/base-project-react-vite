@@ -5,12 +5,12 @@ export default function Footer({ data }) {
   if (!data) return null;
 
   const {
-    brand,
-    socialLinks,
-    contactInfo,
-    quickLinks,
-    partnerLogos,
-    copyright
+    brand = {},
+    socialLinks = [],
+    contactInfo = {},
+    quickLinks = {},
+    partnerLogos = {},
+    copyright = ""
   } = data;
 
   const scrollToSection = (href) => {

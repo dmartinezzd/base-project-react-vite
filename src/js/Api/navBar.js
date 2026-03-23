@@ -1,6 +1,6 @@
 import { getAxiosResponse } from "./axiosResponse";
 
-export async function homeApi(request) {
+export async function navBarApi(request) {
 
   const response = {
     success: false,
@@ -16,8 +16,7 @@ export async function homeApi(request) {
       if (!data.success) {
         response.errorData = data.message;
         return Promise.reject(response);
-      }
-      //transform
+      }      
       const transformResponse = true;//homeTransform(data);
 
       if (transformResponse) {

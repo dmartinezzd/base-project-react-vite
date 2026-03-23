@@ -1,6 +1,6 @@
 import { getAxiosResponse } from "./axiosResponse";
 
-export async function loginApi(request) {
+export async function homeApi(request) {
 
   const response = {
     success: false,
@@ -9,7 +9,6 @@ export async function loginApi(request) {
   };
 
   try {
-  
     const axiosResponse = await getAxiosResponse(request);
     const { status, data } = axiosResponse;
 
@@ -18,7 +17,6 @@ export async function loginApi(request) {
         response.errorData = data.message;
         return Promise.reject(response);
       }
-      //transform
       const transformResponse = true;//homeTransform(data);
 
       if (transformResponse) {
@@ -32,7 +30,9 @@ export async function loginApi(request) {
       response.errorData = "Dió error";
     }
 
-  } catch (ex) { }
+  } catch (ex) { 
+    console.log("Error en homeApi:", ex);
+  }
 
   return Promise.reject(response);
 }
