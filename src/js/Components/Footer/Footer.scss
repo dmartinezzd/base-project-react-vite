@@ -73,12 +73,6 @@ $footer-bg: #0b1733;
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-      opacity: 1;
-      color: $white;
-      padding-left: 4px;
-    }
-
     @media (max-width: 768px) {
       font-size: 13px;
     }
@@ -104,8 +98,7 @@ $footer-bg: #0b1733;
     font-size: 16px;
 
     &:hover {
-      background: rgba($white, 0.2);
-      transform: translateY(-3px);
+      background: rgba(#d71920, 1.0);;
     }
 
     @media (max-width: 768px) {
@@ -136,9 +129,6 @@ $footer-bg: #0b1733;
     transition: all 0.3s ease;
     cursor: pointer;
 
-    &:hover {
-      background: rgba($white, 0.15);
-    }
 
     @media (max-width: 768px) {
       padding: 10px;

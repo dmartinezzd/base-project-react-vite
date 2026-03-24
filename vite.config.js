@@ -12,6 +12,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        silenceDeprecations: ["color-functions", "legacy-js-api", "import"],
         api: 'modern-compiler',
       },
     },
